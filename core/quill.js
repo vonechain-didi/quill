@@ -89,7 +89,6 @@ class Quill {
     this.selection = new Selection(this.scroll, this.emitter);
     this.theme = new this.options.theme(this, this.options); // eslint-disable-line new-cap
     this.keyboard = this.theme.addModule('keyboard');
-    this.clipboard = this.theme.addModule('clipboard');
     this.history = this.theme.addModule('history');
     this.uploader = this.theme.addModule('uploader');
     this.theme.init();
@@ -109,10 +108,7 @@ class Quill {
         source,
       );
     });
-    const contents = this.clipboard.convert({
-      html: `${html}<p><br></p>`,
-      text: '\n',
-    });
+   
     this.setContents(contents);
     this.history.clear();
     if (this.options.placeholder) {
@@ -457,7 +453,6 @@ function expandConfig(container, userConfig) {
     {
       container,
       modules: {
-        clipboard: true,
         keyboard: true,
         history: true,
         uploader: true,
